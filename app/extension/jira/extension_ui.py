@@ -10,7 +10,7 @@ from util.conf import JIRA_SETTINGS
 
 
 def app_single_action(webdriver, datasets):
-    issue_page = Issue(webdriver, issue_key=datasets['current_session']['issue_key'])
+    issue_page = Issue(webdriver, issue_key=datasets['custom_issue_key'])
 
     @print_timing("selenium_xporter_single_export_dialog")
     def selenium_xporter_single_export_dialog():
@@ -35,7 +35,7 @@ def app_single_action(webdriver, datasets):
 
 def app_bulk_action(webdriver, datasets):
     # TODO update - JQL
-    custom_jql = 'issue in (DEMO-1,DEMO-2,DEMO-3)'
+    custom_jql = 'key in (AANES-463,AANES-462,AANES-461,AANES-460,AANES-459,AANES-458)'
     search_page = Search(webdriver, jql=custom_jql)
     @print_timing("selenium_xporter_bulk_export_dialog")
 
@@ -65,7 +65,7 @@ def app_bulk_action(webdriver, datasets):
 
 def app_xlsx_current_fields_action(webdriver, datasets):
     # TODO update - JQL
-    custom_jql = 'issue in (DEMO-1,DEMO-2,DEMO-3)'
+    custom_jql = 'key in (AANES-469,AANES-468,AANES-467,AANES-463,AANES-465,AANES-464)'
     search_page = Search(webdriver, jql=custom_jql)
     @print_timing("selenium_xporter_xlsx_current_fields_export_dialog")
 
