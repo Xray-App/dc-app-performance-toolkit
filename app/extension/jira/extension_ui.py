@@ -10,7 +10,7 @@ from util.conf import JIRA_SETTINGS
 
 
 def app_single_action(webdriver, datasets):
-    issue_page = Issue(webdriver, issue_key=datasets['current_session']['issue_key'])
+    issue_page = Issue(webdriver, issue_key=datasets['custom_issue_key'])
 
     @print_timing("selenium_xporter_single_export_dialog")
     def selenium_xporter_single_export_dialog():
