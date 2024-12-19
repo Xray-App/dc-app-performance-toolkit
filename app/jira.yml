@@ -5,11 +5,12 @@ settings:
   verbose: false
   check-updates: false                 # disable bzt check for updates
   env:
-    application_hostname: Jira-LoadB-7OW390FJ98IX-75930660.us-west-2.elb.amazonaws.com    # Jira DC hostname without protocol and port e.g. test-jira.atlassian.com or localhost
+    # TODO update - application_hostname, application_protocol, application_port, secure, application_postfix, standalone_extension (0- to don't run the app tests on Jmeter /1 - to run the app tests on Jmeter), custom_dataset_query (JQL to select some issues to run the JMeter tests), python3 -> python
+    application_hostname: localhost    # Jira DC hostname without protocol and port e.g. test-jira.atlassian.com or localhost
     application_protocol: http         # http or https
-    application_port: 80               # 80, 443, 8080, 2990, etc
-    secure: True                       # Set False to allow insecure connections, e.g. when using self-signed SSL certificate
-    application_postfix: /jira         # e.g. /jira for TerraForm deployment url like `http://a1234-54321.us-east-2.elb.amazonaws.com/jira`. Leave this value blank for url without postfix.
+    application_port: 8080             # 80, 443, 8080, 2990, etc
+    secure: False                      # Set False to allow insecure connections, e.g. when using self-signed SSL certificate
+    application_postfix:               # e.g. /jira for TerraForm deployment url like `http://a1234-54321.us-east-2.elb.amazonaws.com/jira`. Leave this value blank for url without postfix.
     admin_login: admin
     admin_password: admin
     load_executor: jmeter              # jmeter and locust are supported. jmeter by default.
@@ -35,21 +36,21 @@ settings:
     view_kanban_board: 7
     view_backlog: 6
     browse_boards: 1
-    standalone_extension: 0 # By default disabled
+    standalone_extension: 1 # By default disabled
     # Custom dataset section.
-    custom_dataset_query:  key in (AANES-484,AANES-485,AANES-486,AANES-487,AANES-488,AANES-489)        # Write JQL query to add JQL output to the app/datasets/jira/custom-issues.csv, e.g. "summary ~ 'AppIssue*'"
+    custom_dataset_query: issue in (DEMO-1,DEMO-2,DEMO-3)   # Write JQL query to add JQL output to the app/datasets/jira/custom-issues.csv, e.g. "summary ~ 'AppIssue*'"
 services:
   - module: shellexec
     prepare:
-      - python util/pre_run/environment_checker.py
-      - python util/pre_run/environment_compliance_check.py jira
-      - python util/data_preparation/jira_prepare_data.py
+      - python3 util/pre_run/environment_checker.py
+      - python3 util/pre_run/environment_compliance_check.py jira
+      - python3 util/data_preparation/jira_prepare_data.py
     shutdown:
-      - python util/post_run/jmeter_post_check.py
-      - python util/jtl_convertor/jtls-to-csv.py kpi.jtl selenium.jtl
+      - python3 util/post_run/jmeter_post_check.py
+      - python3 util/jtl_convertor/jtls-to-csv.py kpi.jtl selenium.jtl
     post-process:
-      - python util/analytics/analytics.py jira
-      - python util/post_run/cleanup_results_dir.py
+      - python3 util/analytics/analytics.py jira
+      - python3 util/post_run/cleanup_results_dir.py
   - module: pip-install
     packages:
       - selenium==4.25.0
@@ -115,7 +116,7 @@ modules:
       httpsampler.ignore_failed_embedded_resources: "true"
   selenium:
     chromedriver:
-      version: "130.0.6723.91" # Supports Chrome version 130. You can refer to https://googlechromelabs.github.io/chrome-for-testing
+      version: "131.0.6778.139" # Supports Chrome version 130. You can refer to https://googlechromelabs.github.io/chrome-for-testing
 reporting:
 - data-source: sample-labels
   module: junit-xml

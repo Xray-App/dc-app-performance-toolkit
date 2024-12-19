@@ -10,11 +10,10 @@ from util.conf import JIRA_SETTINGS
 
 
 def app_single_action(webdriver, datasets):
-    issue_page = Issue(webdriver, issue_key=datasets['issue_key'])
+    issue_page = Issue(webdriver, issue_key=datasets['current_session']['issue_key'])
 
     @print_timing("selenium_xporter_single_export_dialog")
     def selenium_xporter_single_export_dialog():
-        @print_timing("selenium_app_custom_action:selenium_xporter_single_export_dialog")
 
         def measure():
             issue_page.go_to()
@@ -35,7 +34,8 @@ def app_single_action(webdriver, datasets):
     selenium_xporter_single_export_dialog()
 
 def app_bulk_action(webdriver, datasets):
-    custom_jql = urllib.parse.quote(random.choice(datasets['custom_jqls'][0]))
+    # TODO update - JQL
+    custom_jql = 'issue in (DEMO-1,DEMO-2,DEMO-3)'
     search_page = Search(webdriver, jql=custom_jql)
     @print_timing("selenium_xporter_bulk_export_dialog")
 
@@ -64,7 +64,8 @@ def app_bulk_action(webdriver, datasets):
     selenium_xporter_bulk_export_dialog()
 
 def app_xlsx_current_fields_action(webdriver, datasets):
-    custom_jql = urllib.parse.quote(random.choice(datasets['custom_jqls'][0]))
+    # TODO update - JQL
+    custom_jql = 'issue in (DEMO-1,DEMO-2,DEMO-3)'
     search_page = Search(webdriver, jql=custom_jql)
     @print_timing("selenium_xporter_xlsx_current_fields_export_dialog")
 
