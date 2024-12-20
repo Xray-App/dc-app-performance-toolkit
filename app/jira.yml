@@ -7,7 +7,7 @@ settings:
   env:
     # TODO update - standalone_extension (0- to don't run the app tests on Jmeter /1 - to run the app tests on Jmeter)
     # TODO update - custom_dataset_query (JQL to select some issues to run the JMeter tests)
-    application_hostname: a281a247aaa1d45bd9686202717e4028-2009743191.us-east-1.elb.amazonaws.com/    # Jira DC hostname without protocol and port e.g. test-jira.atlassian.com or localhost
+    application_hostname: a281a247aaa1d45bd9686202717e4028-2009743191.us-east-1.elb.amazonaws.com    # Jira DC hostname without protocol and port e.g. test-jira.atlassian.com or localhost
     application_protocol: http         # http or https
     application_port: 80               # 80, 443, 8080, 2990, etc
     secure: False                      # Set False to allow insecure connections, e.g. when using self-signed SSL certificate
@@ -117,7 +117,7 @@ modules:
       httpsampler.ignore_failed_embedded_resources: "true"
   selenium:
     chromedriver:
-      version: "131.0.6778.139" # Supports Chrome version 130. You can refer to https://googlechromelabs.github.io/chrome-for-testing
+      version: "130.0.6723.91" # Supports Chrome version 130. You can refer to https://googlechromelabs.github.io/chrome-for-testing
 reporting:
 - data-source: sample-labels
   module: junit-xml
