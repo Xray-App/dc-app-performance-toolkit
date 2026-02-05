@@ -7248,6 +7248,40 @@ if ( sleep_time &gt; 0 ) {
               </JSR223PreProcessor>
               <hashTree/>
             </hashTree>
+             <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_xporter_single_export_action" enabled="true">
+                <boolProp name="TransactionController.parent">true</boolProp>
+                <boolProp name="TransactionController.includeTimers">false</boolProp>
+             </TransactionController>
+                <hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="single export">
+                    <stringProp name="HTTPSampler.path">${application.postfix}/plugins/servlet/jiraxporter?issueKey=AANES-463&amp;outputType=xlsx&amp;template=Issue%20Details%20Excel</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <stringProp name="HTTPSampler.method">GET</stringProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                      <collectionProp name="Arguments.arguments"/>
+                    </elementProp>
+                  </HTTPSamplerProxy>
+                  <hashTree/>
+                </hashTree>
+                <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_xporter_bulk_export_action" enabled="true">
+                  <boolProp name="TransactionController.parent">true</boolProp>
+                  <boolProp name="TransactionController.includeTimers">false</boolProp>
+                </TransactionController>
+                <hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="bulk export">
+                    <stringProp name="HTTPSampler.path">${application.postfix}/plugins/servlet/jiraxporter?template=Sample%20Bulk%20Export%20With%20TOC&amp;jql=issuekey%20in%20(AANES-469%2C%20AANES-468%2C%20AANES-467%2C%20AANES-463%2C%20AANES-465)&amp;outputType=docx&amp;outputType=docx</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <stringProp name="HTTPSampler.method">GET</stringProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                      <collectionProp name="Arguments.arguments"/>
+                    </elementProp>
+                  </HTTPSamplerProxy>
+                  <hashTree/>
+                </hashTree>
             <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="login_as_specific_user" enabled="false"/>
             <hashTree>
               <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="username:password">

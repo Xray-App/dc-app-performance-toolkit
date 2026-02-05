@@ -11,20 +11,20 @@
 # This value can not be altered after the configuration has been applied.
 # Only lowercase letters, numbers, dashes, and dots are allowed.
 # ! REQUIRED !
-environment_name = "dcapt-product"
+environment_name = "xporter-dc-annual-review"
 
 # Supported products: jira, confluence, bitbucket, crowd and bamboo.
 # For JSM set product as jira.
 # e.g.: products = ["jira"]
 # ! REQUIRED !
-products = ["product-to-deploy"]
+products = ["jira"]
 
 # License
 # To avoid storing license in a plain text file, we recommend storing it in an environment variable prefixed with `TF_VAR_` (i.e. `TF_VAR_jira_license`) and keep the below line commented out
 # If storing license as plain-text is not a concern for this environment, feel free to uncomment the following line and supply the license here.
 # ! IMPORTANT ! Please make sure valid license is used without spaces and new line symbols.
 # ! REQUIRED !
-jira_license = "jira-license"
+jira_license = "AAAB3Q0ODAoPeNqVUl2PmkAUfZ9fQdKXNg0GhuiqCUkV2coWYQvutmv2ZcSrTMWBzAyw/vvlQ6Otq0kf58A9555zz6d5nCsPhCl4oOjdodEf6n3FCucK1nAPWRyIpCmbEAlmjaiarhoacmkETMB8n4FHdmBa/mxmB5YzctEfyknn8N1e0XratL25HTwGTmgjL98tgfvrJwFcmKp+pLLfMsr3ZzpGJdWSZTxd5ZHs1A9VpGtZEg4dEklagCl5DijMlyLiNGvEGsQuSJKT07shqtiJBUwCb8GklZ4SEZszS7Puf1p+MS78H/t85HwlrJDZtAyDBWaL9aB0nqbjX+Gb75c7tsDey1jicpXdjxb4mW5ezaMRZ2K6ziS0PdXFutHVe8bdLRuhJLxeaE0SURkBXgCvKMa/NawOXnxddbx+T3X97ne0hf1zFVrtSe9p2p3WNwwdbTgAi9MsA34j9secRzER8O8hz6ebZDJOxTFV2zP/9vGB1kcVmMDpGg9OMFLCg1vlc30Cpb3Bl9ehcjoTmhFaoYyw6P+7cFGq80XPi3KD40o5jolj5PMNYVS0pVrShCSdZbqNq1n4tsl5Gm07NEVWymSlaFd2kut/NXtcbN2gF+veCPog1sBXtd4BTttWizAtAhQu+W/nAK+cV0tGSTPrVkhxSk3hPwIVAIgggSe3sUypLOsgRmQPR3/zWkiIX02mm"
 confluence_license = "confluence-license"
 bitbucket_license = "bitbucket-license"
 crowd_license = "crowd-license"
